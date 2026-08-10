@@ -4,6 +4,7 @@ import type { CSSProperties, ReactNode } from "react";
 import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
+import { cacheLife } from "next/cache";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import { GithubIcon } from "@/components/icons/social";
@@ -14,7 +15,7 @@ import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { buildAlternates } from "@/lib/metadata";
 import { cn } from "@/lib/cn";
-import { projects } from "@/features/projects";
+import { getVisibleProjects, projects } from "@/features/projects";
 import type { ProjectAccent, ProjectStat } from "@/features/projects/types";
 
 const ACCENT_VARS: Record<ProjectAccent, string> = {
@@ -49,7 +50,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale, slug } = await params;
   if (!hasLocale(routing.locales, locale)) return {};
-  const project = projects.find((p) => p.slug === slug);
+  cacheLife("minutes");
+  const visibleProjects = await getVisibleProjects();
+  const project = visibleProjects.find((p) => p.slug === slug);
   if (!project) return {};
   setRequestLocale(locale);
   const t = await getTranslations("projects");
@@ -76,9 +79,11 @@ export default async function ProjectDetailPage({
   const { locale, slug } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
+  cacheLife("minutes");
 
-  const projectIndex = projects.findIndex((p) => p.slug === slug);
-  const project = projectIndex >= 0 ? projects[projectIndex] : undefined;
+  const visibleProjects = await getVisibleProjects();
+  const projectIndex = visibleProjects.findIndex((p) => p.slug === slug);
+  const project = projectIndex >= 0 ? visibleProjects[projectIndex] : undefined;
   if (!project || !project.hasCaseStudy) notFound();
 
   const t = await getTranslations("projects");

@@ -3,6 +3,7 @@
 import type { Metadata } from "next";
 import { hasLocale } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
+import { cacheLife } from "next/cache";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { buildAlternates } from "@/lib/metadata";
@@ -37,6 +38,8 @@ export default async function HomePage({
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
+  // Project visibility flags (Edge Config) must propagate without a deploy.
+  cacheLife("minutes");
 
   return (
     <>

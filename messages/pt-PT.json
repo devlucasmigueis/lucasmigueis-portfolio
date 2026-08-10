@@ -164,6 +164,40 @@
           "impact": "Em produção em maviedecor.pt. A cliente faz a gestão do site sozinha. Cada lead chega ao WhatsApp e fica guardado em DB."
         }
       },
+      "eiri-petsitter": {
+        "description": "Landing para uma pet sitter de Indaiatuba, no Brasil. CMS Sanity com fallbacks embutidos para que a cliente actualize textos, fotos e o número de WhatsApp sozinha.",
+        "category": "Trabalho de cliente",
+        "overview": "Landing divertida para uma pet sitter brasileira com todo o conteúdo em <emphasis>Sanity</emphasis>. Cada campo do CMS é opcional e cai no texto embutido no código; os leads vão directos para o WhatsApp.",
+        "stats": {
+          "cms": {
+            "label": "CMS",
+            "value": "Sanity",
+            "description": "Documento único, editado em português pela cliente: textos, fotos, depoimentos, FAQ e o número de WhatsApp."
+          },
+          "fallback": {
+            "label": "FALLBACK",
+            "value": "100",
+            "unit": "%",
+            "description": "Todos os campos são opcionais — os vazios caem nos textos e fotos embutidos no código."
+          },
+          "locales": {
+            "label": "IDIOMAS",
+            "value": "2",
+            "description": "PT e EN com cadeia por campo: tradução do CMS, EN embutido e PT como último recurso."
+          },
+          "cost": {
+            "label": "CUSTO MENSAL",
+            "value": "$0",
+            "description": "Build estática do Vite em Cloudflare Workers, free tier do Sanity para o conteúdo."
+          }
+        },
+        "caseStudy": {
+          "role": "Designer + Developer Solo",
+          "problem": "Uma pet sitter de Indaiatuba, no Brasil, precisava de um site que transformasse visitas em conversas de WhatsApp. Ela tem de actualizar preços, fotos, depoimentos e FAQ sozinha — sem código e sem mensalidade.",
+          "solution": "React 19 e Vite com uma identidade divertida: rasto de patinhas no cursor, fotos polaroid, marquee e um chat de WhatsApp simulado que mostra o relatório diário. O conteúdo vive num único documento Sanity com o Studio em português; cada campo é opcional e cai no texto embutido, por isso um CMS meio preenchido nunca deixa uma secção vazia. As imagens têm recortes por hotspot e placeholders blur-up. Vitest cobre o mapper de conteúdo e as secções principais.",
+          "impact": "Em produção em Cloudflare Workers com custo mensal zero. A cliente edita os dois idiomas — textos, fotos, até o número de WhatsApp — a partir do Sanity Studio sem tocar em código."
+        }
+      },
       "stay-safe": {
         "description": "App móvel de segurança para identificar rotas perigosas através de pins comunitários no mapa.",
         "category": "Mobile",

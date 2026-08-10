@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
 import { env } from "@/env";
 import { routing } from "@/i18n/routing";
-import { projects } from "@/features/projects";
+import { getVisibleProjects } from "@/features/projects";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const projects = await getVisibleProjects();
   const base = env.NEXT_PUBLIC_APP_URL.replace(/\/$/, "");
   const lastModified = new Date();
   const urls: MetadataRoute.Sitemap = [];

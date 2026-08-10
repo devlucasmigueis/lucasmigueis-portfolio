@@ -164,6 +164,40 @@
           "impact": "Live at maviedecor.pt. The owner runs the site herself. Every lead reaches WhatsApp and gets stored in the DB."
         }
       },
+      "eiri-petsitter": {
+        "description": "Landing for a pet sitter in Indaiatuba, Brazil. Sanity CMS with bundled fallbacks so the owner updates copy, photos and the WhatsApp number herself.",
+        "category": "Client work",
+        "overview": "Playful landing for a Brazilian pet sitter with all content in <emphasis>Sanity</emphasis>. Every CMS field is optional and falls back to copy bundled in the code; leads go straight to WhatsApp.",
+        "stats": {
+          "cms": {
+            "label": "CMS",
+            "value": "Sanity",
+            "description": "Single document, edited in Portuguese by the owner: copy, photos, testimonials, FAQ and the WhatsApp number."
+          },
+          "fallback": {
+            "label": "FALLBACK",
+            "value": "100",
+            "unit": "%",
+            "description": "Every field is optional — empty ones fall back to copy and photos bundled in the code."
+          },
+          "locales": {
+            "label": "LOCALES",
+            "value": "2",
+            "description": "PT and EN with a per-field chain: CMS translation, bundled EN, then PT as last resort."
+          },
+          "cost": {
+            "label": "MONTHLY COST",
+            "value": "$0",
+            "description": "Static Vite build on Cloudflare Workers, Sanity free tier for content."
+          }
+        },
+        "caseStudy": {
+          "role": "Solo Designer + Developer",
+          "problem": "A pet sitter in Indaiatuba, Brazil needed a site that turns visits into WhatsApp conversations. She has to update prices, photos, testimonials and FAQ on her own — no code, no monthly bill.",
+          "solution": "React 19 and Vite with a playful identity: paw-trail cursor, polaroid photos, a marquee and a simulated WhatsApp chat showing the daily report. Content lives in a single Sanity document with the Studio in Portuguese; every field is optional and falls back to bundled copy, so a half-filled CMS never renders an empty section. Images get hotspot crops and blur-up placeholders. Vitest covers the content mapper and key sections.",
+          "impact": "Live on Cloudflare Workers at zero monthly cost. The owner edits both languages — copy, photos, even the WhatsApp number — from Sanity Studio without touching code."
+        }
+      },
       "stay-safe": {
         "description": "Mobile safety app to identify dangerous routes via community-flagged map pins.",
         "category": "Mobile",

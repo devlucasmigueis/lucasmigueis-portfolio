@@ -5,7 +5,7 @@ import Image from "next/image";
 import { RevealOnView } from "@/components/motion/reveal-on-view";
 import { LiftCard } from "@/components/motion/lift-card";
 import { Link } from "@/i18n/navigation";
-import { projects } from "../data";
+import { getVisibleProjects } from "../visibility";
 import type { ProjectAccent } from "../types";
 
 const ACCENT_VARS: Record<ProjectAccent, string> = {
@@ -18,6 +18,7 @@ const ACCENT_VARS: Record<ProjectAccent, string> = {
 
 export async function Projects() {
   const t = await getTranslations("projects");
+  const projects = await getVisibleProjects();
 
   return (
     <section
