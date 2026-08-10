@@ -12,7 +12,7 @@ import { SiteFooter } from "@/components/site-footer";
 import { PersonJsonLd } from "@/components/json-ld";
 import { Hero } from "@/features/hero";
 import { About } from "@/features/about";
-import { Projects } from "@/features/projects";
+import { FLAGS_CACHE_LIFE, Projects } from "@/features/projects";
 import { Skills } from "@/features/skills";
 import { GithubActivity } from "@/features/github";
 import { Experience } from "@/features/experience";
@@ -38,8 +38,8 @@ export default async function HomePage({
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
-  // Project visibility flags (Edge Config) must propagate without a deploy.
-  cacheLife("minutes");
+  // Project visibility flags (Global Config) must propagate without a deploy.
+  cacheLife(FLAGS_CACHE_LIFE);
 
   return (
     <>

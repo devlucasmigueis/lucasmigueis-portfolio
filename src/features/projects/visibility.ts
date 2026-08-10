@@ -3,6 +3,16 @@ import { env } from "@/env";
 import { projects } from "./data";
 import type { Project } from "./types";
 
+// cacheLife profile for pages that render visibility flags: revalidate keeps
+// flag flips propagating within a minute, while the long expire means
+// visitors are always served from cache with regeneration in the background —
+// a short expire was causing blocking renders (15s+ FCP) on low traffic.
+export const FLAGS_CACHE_LIFE = {
+  stale: 300,
+  revalidate: 60,
+  expire: 60 * 60 * 24 * 30,
+} as const;
+
 // Per-project visibility flags live in Vercel Global Config (formerly Edge
 // Config), one boolean per project under the key `show_<slug>` (e.g.
 // `show_eiri-petsitter`). Flipping a flag in the Vercel dashboard hides/shows

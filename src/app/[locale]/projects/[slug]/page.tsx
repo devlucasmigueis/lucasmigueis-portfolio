@@ -15,7 +15,11 @@ import { Link } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 import { buildAlternates } from "@/lib/metadata";
 import { cn } from "@/lib/cn";
-import { getVisibleProjects, projects } from "@/features/projects";
+import {
+  FLAGS_CACHE_LIFE,
+  getVisibleProjects,
+  projects,
+} from "@/features/projects";
 import type { ProjectAccent, ProjectStat } from "@/features/projects/types";
 
 const ACCENT_VARS: Record<ProjectAccent, string> = {
@@ -50,7 +54,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale, slug } = await params;
   if (!hasLocale(routing.locales, locale)) return {};
-  cacheLife("minutes");
+  cacheLife(FLAGS_CACHE_LIFE);
   const visibleProjects = await getVisibleProjects();
   const project = visibleProjects.find((p) => p.slug === slug);
   if (!project) return {};
@@ -79,7 +83,7 @@ export default async function ProjectDetailPage({
   const { locale, slug } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
-  cacheLife("minutes");
+  cacheLife(FLAGS_CACHE_LIFE);
 
   const visibleProjects = await getVisibleProjects();
   const projectIndex = visibleProjects.findIndex((p) => p.slug === slug);
