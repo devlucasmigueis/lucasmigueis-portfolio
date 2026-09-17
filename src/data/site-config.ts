@@ -19,7 +19,7 @@ export const siteConfig = {
   },
   languages: ["EN", "PT", "ES"],
   links: {
-    github: "https://github.com/Luskaaa",
+    github: "https://github.com/devlucasmigueis",
     linkedin: "https://www.linkedin.com/in/lucas-migueis/",
   },
 } as const;

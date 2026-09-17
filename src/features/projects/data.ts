@@ -72,7 +72,7 @@ export const projects: ReadonlyArray<Project> = [
     hasCaseStudy: true,
     hasImpact: true,
     liveUrl: "https://maviedecor.pt",
-    sourceUrl: "https://github.com/Luskaaa/mavie-decor-landing",
+    sourceUrl: "https://github.com/devlucasmigueis/mavie-decor-landing",
     previewImage: "/mavie-decor.jpg",
   },
   {
@@ -140,7 +140,7 @@ export const projects: ReadonlyArray<Project> = [
     hasCaseStudy: true,
     hasImpact: true,
     liveUrl: "https://lucasmigueis.com",
-    sourceUrl: "https://github.com/Luskaaa/lucasmigueis-portfolio",
+    sourceUrl: "https://github.com/devlucasmigueis/lucasmigueis-portfolio",
     previewImage: "/portfolio.png",
   },
 ];
