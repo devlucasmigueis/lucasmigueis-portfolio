@@ -3,14 +3,14 @@ export const siteConfig = {
   role: "Full Stack Developer",
   description:
     "Full Stack Developer building Portuguese government services used by millions.",
-  email: "lucasmigueis1311@gmail.com",
+  email: "contato@lucasmigueis.com",
   available: true,
   cvPaths: {
     en: "/Lucas_Migueis_CV_EN.pdf",
     "pt-PT": "/Lucas_Migueis_CV.pdf",
   },
   github: {
-    username: "Luskaaa",
+    username: "devlucasmigueis",
   },
   stats: {
     years: "4+",
